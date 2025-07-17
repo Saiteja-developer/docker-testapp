@@ -1,0 +1,20 @@
+# Use root/example as user/password credentials
+
+services:
+
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: hr
+      MONGO_INITDB_ROOT_PASSWORD: hr
+
+  mongo-express:
+    image: mongo-express
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: hr
+      ME_CONFIG_MONGODB_ADMINPASSWORD: hr
+      ME_CONFIG_MONGODB_URL: mongodb://hr:hr@mongo:27017/
